@@ -15,7 +15,7 @@ const getProducts = asyncHandler(async (req, res) => {
     : {};
 
   const count = await Product.countDocuments({ ...keyword });
-  const products = await Product.find({ ...keyword })
+  const products = await Product.find({ ...keyword }).sort({ createdAt: -1 })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
@@ -127,6 +127,16 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.json(products);
 });
 
+const getTopProductsByPrice = asyncHandler(async (req, res) => {
+  const { product_id } = req.params;
+  let products;
+  if (product_id !== "0")
+    products = await Product.find({ _id: { $ne: product_id } }).sort({ price: -1 }).limit(4);
+  else
+    products = await Product.find({}).sort({ price: -1 }).limit(4);
+  res.json(products);
+});
+
 const stisticReview = asyncHandler(async (req, res) => {
   try {
     const productId = req.params.productId;
@@ -164,14 +174,14 @@ const stisticReview = asyncHandler(async (req, res) => {
 
 const filterByPriceAndRating = asyncHandler(async (req, res) => {
   try {
-    const {minPrice, maxPrice, minRating} = req.params
+    const { minPrice, maxPrice, minRating } = req.params
     const products = await this.find({
       $and: [
         { price: { $gte: minPrice, $lte: maxPrice } },
         { rating: { $gte: minRating } },
       ],
     });
-  
+
     return products;
   } catch (error) {
     console.error(error);
@@ -188,5 +198,6 @@ export {
   createProductReview,
   getTopProducts,
   stisticReview,
-  filterByPriceAndRating
+  filterByPriceAndRating,
+  getTopProductsByPrice
 };

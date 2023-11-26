@@ -55,45 +55,49 @@ const RegisterScreen = () => {
           <Card className='shadow px-4'>
             <Card.Body>
               <div className='mb-3 mt-md-4'>
-                <h2 className='fw-bold mb-2 text-center text-uppercase '>
+                <h2 className='fw-bold mb-2 text-center text-uppercase ' style={{color:'black'}}>
                   Register Account
                 </h2>
                 <div className='mb-3'>
                   <Form onSubmit={submitHandler}>
                     <Form.Group className='mb-3' controlId='Name'>
-                      <Form.Label className='text-center'>Name</Form.Label>
+                      <Form.Label className='text-center' style={{color:'black'}}>Name</Form.Label>
                       <Form.Control
                         type='text'
                         placeholder='Enter Name'
                         onChange={(e) => setName(e.target.value)}
+                        style={{color:'black'}}
                       />
                     </Form.Group>
 
                     <Form.Group className='mb-3' controlId='formBasicEmail'>
-                      <Form.Label className='text-center'>
+                      <Form.Label className='text-center' style={{color:'black'}}>
                         Email address
                       </Form.Label>
                       <Form.Control
                         type='email'
                         placeholder='Enter email'
                         onChange={(e) => setEmail(e.target.value)}
+                        style={{color:'black'}}
                       />
                     </Form.Group>
 
                     <Form.Group className='mb-3' controlId='formBasicPassword'>
-                      <Form.Label>Password</Form.Label>
+                      <Form.Label style={{color:'black'}}>Password</Form.Label>
                       <Form.Control
                         type='password'
                         placeholder='Password'
                         onChange={(e) => setPassword(e.target.value)}
+                        style={{color:'black'}}
                       />
                     </Form.Group>
                     <Form.Group className='mb-3' controlId='formBasicPassword'>
-                      <Form.Label>Confirm Password</Form.Label>
+                      <Form.Label style={{color:'black'}}>Confirm Password</Form.Label>
                       <Form.Control
                         type='password'
                         placeholder='Password'
                         onChange={(e) => setConfirmPassword(e.target.value)}
+                        style={{color:'black'}}
                       />
                     </Form.Group>
                     <Form.Group
@@ -112,9 +116,9 @@ const RegisterScreen = () => {
                     </div>
                   </Form>
                   <div className='mt-3'>
-                    <p className='mb-0  text-center'>
+                    <p className='mb-0  text-center' style={{color:'black'}}>
                       Already have an account??{' '}
-                      <a href="/login" className='text-primary fw-bold'>
+                      <a href="/login" className='text-primary fw-bold' style={{color:'black'}}>
                         Sign In
                       </a>
                     </p>

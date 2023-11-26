@@ -5,6 +5,9 @@ import Rating from './Rating';
 const Product = ({ product }) => {
   return (
     <Card className='my-3 p-3 rounded'>
+      <Card.Header style={{backgroundColor:'white', padding:'0px'}}>
+        <div style={{padding:'5px 10px', backgroundColor:'yellow', color:'black', width:'70px', marginBottom:'5px', borderRadius:'10px'}}>New</div>
+      </Card.Header>
       <Link to={`/product/${product._id}`}>
         <Card.Img src={product.image} variant='top' style={{width:'266px', height:'212px',objectFit:"contain",boxShadow:'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px'}} />
       </Link>

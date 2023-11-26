@@ -48,28 +48,30 @@ const LoginScreen = () => {
           <Card className='shadow px-4'>
             <Card.Body>
               <div className='mb-3 mt-md-4'>
-                <h2 className='fw-bold mb-2 text-center text-uppercase '>
+                <h2 className='fw-bold mb-2 text-center text-uppercase ' style={{color:'black'}}>
                   LOGIN
                 </h2>
                 <div className='mb-3'>
                   <Form onSubmit={submitHandler}>
                     <Form.Group className='mb-3' controlId='formBasicEmail'>
-                      <Form.Label className='text-center'>
+                      <Form.Label className='text-center' style={{color:'black'}}>
                         Email address
                       </Form.Label>
                       <Form.Control
                         type='email'
                         placeholder='Enter email'
                         onChange={(e) => setEmail(e.target.value)}
+                        style={{color:'black'}}
                       />
                     </Form.Group>
 
                     <Form.Group className='mb-3' controlId='formBasicPassword'>
-                      <Form.Label>Password</Form.Label>
+                      <Form.Label style={{color:'black'}}>Password</Form.Label>
                       <Form.Control
                         type='password'
                         placeholder='Password'
                         onChange={(e) => setPassword(e.target.value)}
+                        style={{color:'black'}}
                       />
                     </Form.Group>
 
@@ -85,9 +87,9 @@ const LoginScreen = () => {
                     </div>
                   </Form>
                   <div className='mt-3'>
-                    <p className='mb-0  text-center'>
+                    <p className='mb-0  text-center' style={{color:'black'}}>
                       Already have't an account??{' '}
-                      <a href="/register" className='text-primary fw-bold'>
+                      <a href="/register" className='text-primary fw-bold' style={{color:'black'}}>
                         Register
                       </a>
                     </p>

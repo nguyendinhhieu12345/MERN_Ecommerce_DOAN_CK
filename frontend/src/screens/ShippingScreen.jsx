@@ -34,13 +34,14 @@ const ShippingScreen = () => {
           <Card className='shadow px-4'>
             <Card.Body>
               <div className='mb-3 mt-md-4'>
-                <h2 className='fw-bold mb-2 text-center text-uppercase '>
+                <h2 className='fw-bold mb-2 text-center text-uppercase' style={{color:'black'}}>
                   Shipping
                 </h2>
                 <Form onSubmit={submitHandler}>
                   <Form.Group className='my-2' controlId='address'>
-                    <Form.Label>Address</Form.Label>
+                    <Form.Label style={{color:'black'}}>Address</Form.Label>
                     <Form.Control
+                    style={{color:'black'}}
                       type='text'
                       placeholder='Enter address'
                       value={address}
@@ -50,8 +51,9 @@ const ShippingScreen = () => {
                   </Form.Group>
 
                   <Form.Group className='my-2' controlId='city'>
-                    <Form.Label>City</Form.Label>
+                    <Form.Label style={{color:'black'}}>City</Form.Label>
                     <Form.Control
+                    style={{color:'black'}}
                       type='text'
                       placeholder='Enter city'
                       value={city}
@@ -61,8 +63,9 @@ const ShippingScreen = () => {
                   </Form.Group>
 
                   <Form.Group className='my-2' controlId='postalCode'>
-                    <Form.Label>Postal Code</Form.Label>
+                    <Form.Label style={{color:'black'}}>Postal Code</Form.Label>
                     <Form.Control
+                    style={{color:'black'}}
                       type='text'
                       placeholder='Enter postal code'
                       value={postalCode}
@@ -72,8 +75,9 @@ const ShippingScreen = () => {
                   </Form.Group>
 
                   <Form.Group className='my-2' controlId='country'>
-                    <Form.Label>Country</Form.Label>
+                    <Form.Label style={{color:'black'}}>Country</Form.Label>
                     <Form.Control
+                    style={{color:'black'}}
                       type='text'
                       placeholder='Enter country'
                       value={country}

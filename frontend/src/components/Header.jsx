@@ -28,9 +28,18 @@ const Header = () => {
   };
 
   return (
-    <header style={{ position: 'fixed', zIndex: '10', width: '100%' }}>
-      <Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
-        <Container >
+    <header
+      style={{
+        position: 'fixed',
+        zIndex: '10',
+        width: '100%',
+        backgroundColor: 'white',
+        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+        color: 'black',
+      }}
+    >
+      <Navbar expand='lg' collapseOnSelect>
+        <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
               <img
@@ -41,7 +50,7 @@ const Header = () => {
               MyShop
             </Navbar.Brand>
           </LinkContainer>
-          <Nav style={{ width: '50%', margin:'auto', margin:'0 100px'  }}>
+          <Nav style={{ width: '50%', margin: 'auto', margin: '0 100px' }}>
             <SearchBox />
           </Nav>
           <Navbar.Collapse id='basic-navbar-nav'>

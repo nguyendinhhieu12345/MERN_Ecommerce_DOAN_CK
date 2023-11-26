@@ -43,6 +43,7 @@ const PaymentScreen = () => {
               name='paymentMethod'
               value='PayPal'
               checked
+              style={{color:'black'}}
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
           </Col>

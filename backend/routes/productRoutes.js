@@ -8,7 +8,8 @@ import {
   deleteProduct,
   createProductReview,
   getTopProducts,
-  stisticReview
+  stisticReview,
+  getTopProductsByPrice
 } from '../controllers/productController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 
@@ -16,6 +17,7 @@ router.route('/').get(getProducts).post(protect, admin, createProduct);
 router.route('/:id/reviews').post(protect, createProductReview);
 router.route('/statistic-review/:productId').get(protect, stisticReview);
 router.get('/top', getTopProducts);
+router.get('/top-price/:product_id', getTopProductsByPrice);
 router
   .route('/:id')
   .get(getProductById)

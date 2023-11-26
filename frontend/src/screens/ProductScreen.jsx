@@ -15,6 +15,7 @@ import { toast } from 'react-toastify';
 import {
   useGetProductDetailsQuery,
   useCreateReviewMutation,
+  useGetTopProductsByPriceQuery,
 } from '../slices/productsApiSlice';
 import Rating from '../components/Rating';
 import Loader from '../components/Loader';
@@ -22,6 +23,7 @@ import Message from '../components/Message';
 import { addToCart } from '../slices/cartSlice';
 import axios from 'axios';
 import { PRODUCTS_URL } from '../constants';
+import Product from '../components/Product';
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -40,6 +42,8 @@ const ProductScreen = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [createReview, { isLoading: loadingProductReview }] =
     useCreateReviewMutation();
+
+  const { data: productTopPrice } = useGetTopProductsByPriceQuery(productId);
 
   useEffect(() => {
     const getProductReviews = async () => {
@@ -61,7 +65,7 @@ const ProductScreen = () => {
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
-    navigate('/cart');
+    // navigate('/cart');
   };
 
   const submitHandler = async (e) => {
@@ -284,10 +288,29 @@ const ProductScreen = () => {
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant='flush'>
                 {product.reviews.map((review) => (
-                  <ListGroup.Item key={review._id} style={{padding:'10px 20px'}}>
-                    <div style={{ display: 'flex', alignItems:'center', padding:'0px' }}>
-                      <h4 style={{padding:'0px', margin:'0px'}}>{review.name}</h4>
-                      <p style={{ marginLeft:'15px', fontSize:'12px', marginBottom:'0px' }}>{review.createdAt.substring(0, 10)}</p>
+                  <ListGroup.Item
+                    key={review._id}
+                    style={{ padding: '10px 20px' }}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '0px',
+                      }}
+                    >
+                      <h4 style={{ padding: '0px', margin: '0px' }}>
+                        {review.name}
+                      </h4>
+                      <p
+                        style={{
+                          marginLeft: '15px',
+                          fontSize: '12px',
+                          marginBottom: '0px',
+                        }}
+                      >
+                        {review.createdAt.substring(0, 10)}
+                      </p>
                     </div>
                     <Rating value={review.rating} />
                     <p>{review.comment}</p>
@@ -350,6 +373,14 @@ const ProductScreen = () => {
                 </ListGroup.Item>
               </ListGroup>
             </Col>
+          </Row>
+          <Row>
+            <h1 style={{ color: 'black' }}>Suggest product</h1>
+            {productTopPrice?.map((product) => (
+              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                <Product product={product} />
+              </Col>
+            ))}
           </Row>
         </>
       )}
