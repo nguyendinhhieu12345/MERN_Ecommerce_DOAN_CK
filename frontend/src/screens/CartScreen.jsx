@@ -97,31 +97,35 @@ const CartScreen = () => {
           </ListGroup>
         )}
       </Col>
-      <Col md={3} style={{ margin: '70px 0' }}>
-        <Card>
-          <ListGroup variant='flush'>
-            <ListGroup.Item style={{color:'black'}}>
-              <h3 style={{ color: 'black' }}>
-                Total: {cartItems.reduce((acc, item) => acc + item.qty, 0)} items
-              </h3>
-              Total price: $
-              {cartItems
-                .reduce((acc, item) => acc + item.qty * item.price, 0)
-                .toFixed(2)}
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Button
-                type='button'
-                className='btn-block'
-                disabled={cartItems.length === 0}
-                onClick={checkoutHandler}
-              >
-                Proceed To Checkout
-              </Button>
-            </ListGroup.Item>
-          </ListGroup>
-        </Card>
-      </Col>
+      {cartItems.length !== 0 && (
+        <Col md={3} style={{ margin: '70px 0' }}>
+          <Card>
+            <ListGroup variant='flush'>
+              <ListGroup.Item style={{ color: 'black' }}>
+                <h3 style={{ color: 'black' }}>
+                  Total: {cartItems.reduce((acc, item) => acc + item.qty, 0)}{' '}
+                  items
+                </h3>
+                Total price: $
+                {cartItems
+                  .reduce((acc, item) => acc + item.qty * item.price, 0)
+                  .toFixed(2)}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Button
+                  type='button'
+                  className='btn-block'
+                  disabled={cartItems.length === 0}
+                  onClick={checkoutHandler}
+                >
+                  Proceed To Checkout
+                </Button>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
+        </Col>
+      )}
+
       <>
         <h1 style={{ color: 'black' }}>Suggest products</h1>
         <Row>
