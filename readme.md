@@ -7,46 +7,32 @@ MSSV: 20142498
 + BackEnd: Nodejs, Expressjs, jwt, mongodb
 + Payment with paypal
 
-- Feature:
-+ Full featured shopping cart
-+ Product reviews and ratings
-+ Top products carousel
-+ Product pagination
-+ Product search feature
-+ User profile with orders
-+ Admin product management
-+ Admin user management
-+ Admin Order details page
-+ Mark orders as delivered option
-+ Checkout process (shipping, payment method, etc)
-+ PayPal / credit card integration
-+ Database seeder (products & users)
-
 - Using:
 + Open terminal in Visual studio code
-+ cd in forder
-+ Connect db and import DB:
++ Từ folder gốc chạy lệnh  `npm i` để download các package cho backend
++ cd vào folder frontend bằng lệnh `cd frontend`
++ sau đó chạy lệnh `npm i`
+
+sau đó tạo 1 file '.env' từ thư mục gốc
+sau đó coppy data từ file '.env.example' qua file '.env'
+
+- Sau khi chạy lệnh xong: từ thư mục gốc trong ternimal
++ Chạy lệnh sau để connect db và import data có sẵn:
 `npm run data:import`
-+ and run:
++ sau đó chạy lệnh này:
 `npm run dev`
 
-+ Or you can:
-`cd frontend`
-run: `npm start`
-`cd backend`
-run: `npm start`
-
-- After start project:
-+ Open browser and go to: `localhost:3000`
-Account Login:
+- Sau khi chạy được project:
++ Mở brower: `localhost:3000`
+Tài khoản đăng nhập:
 + Admin: 'admin@email.com'
 / 'password': '123456'
-+ User: 'john@email.com'
++ User: 'dinhhieu@email.com'
 / 'password': '123456'
-or User: 'jane@email.com'
+or User: 'minhdao@email.com'
 / 'password': '123456'
-Or redirect page register and sign up account
+Hoặc có thể đăng ký tài khoản
 
 - You can checkout/payment with account paypal:
-email: sb-47llvf28330072@business.example.com
-password: hk_5m@G'
+email: *****
+password: ***** 
