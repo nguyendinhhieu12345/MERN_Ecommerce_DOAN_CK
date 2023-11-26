@@ -9,7 +9,8 @@ import {
   createProductReview,
   getTopProducts,
   stisticReview,
-  getTopProductsByPrice
+  getTopProductsByPrice,
+  filterByPriceAndRating
 } from '../controllers/productController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 
@@ -18,6 +19,7 @@ router.route('/:id/reviews').post(protect, createProductReview);
 router.route('/statistic-review/:productId').get(protect, stisticReview);
 router.get('/top', getTopProducts);
 router.get('/top-price/:product_id', getTopProductsByPrice);
+router.route('/filter').post(filterByPriceAndRating);
 router
   .route('/:id')
   .get(getProductById)

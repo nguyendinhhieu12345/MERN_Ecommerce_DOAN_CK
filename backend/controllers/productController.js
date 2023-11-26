@@ -174,15 +174,44 @@ const stisticReview = asyncHandler(async (req, res) => {
 
 const filterByPriceAndRating = asyncHandler(async (req, res) => {
   try {
-    const { minPrice, maxPrice, minRating } = req.params
-    const products = await this.find({
-      $and: [
-        { price: { $gte: minPrice, $lte: maxPrice } },
-        { rating: { $gte: minRating } },
-      ],
+    const pageSize = process.env.PAGINATION_LIMIT;
+    const page = Number(req.query.pageNumber) || 1;
+
+    const keyword = req.query.keyword
+      ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+      }
+      : {};
+
+    const { minPrice, maxPrice, minRating } = req.body;
+
+    const dynamicFilters = {};
+
+    if (minPrice !== undefined && maxPrice !== undefined) {
+      dynamicFilters.price = { $gte: minPrice, $lte: maxPrice };
+    }
+
+    if (minRating !== undefined) {
+      dynamicFilters.rating = { $gte: minRating };
+    }
+
+    const count = await Product.countDocuments({
+      ...keyword,
+      ...dynamicFilters,
     });
 
-    return products;
+    const products = await Product.find({
+      ...keyword,
+      ...dynamicFilters,
+    })
+      .sort({ createdAt: -1 })
+      .limit(pageSize)
+      .skip(pageSize * (page - 1));
+
+    res.json({ products, page, pages: Math.ceil(count / pageSize) });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
