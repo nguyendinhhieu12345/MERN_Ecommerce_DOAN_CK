@@ -31,8 +31,6 @@ const HomeScreen = () => {
     };
   }, [data]);
 
-  
-
   const { data: productTopPrice } = useGetTopProductsByPriceQuery('0');
 
   const handleFilter = async (minPrice, maxPrice, minRating) => {
@@ -48,8 +46,6 @@ const HomeScreen = () => {
       );
       console.log(response);
       setProducts(response?.data);
-      // setActive(false);
-      // const data = response.data;
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -126,19 +122,6 @@ const HomeScreen = () => {
               ))}
             </Row>
           )}
-
-          {/* <Row>
-            {data.products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <Product product={product} />
-              </Col>
-            ))}
-          </Row>
-          <Paginate
-            pages={data.pages}
-            page={data.page}
-            keyword={keyword ? keyword : ''}
-          /> */}
 
           {!keyword && (
             <>

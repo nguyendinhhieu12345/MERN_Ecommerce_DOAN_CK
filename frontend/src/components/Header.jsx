@@ -50,7 +50,7 @@ const Header = () => {
               MyShop
             </Navbar.Brand>
           </LinkContainer>
-          <Nav style={{ width: '50%', margin: 'auto', margin: '0 100px' }}>
+          <Nav style={{ width: '50%', margin: '0 100px' }}>
             <SearchBox />
           </Nav>
           <Navbar.Collapse id='basic-navbar-nav'>

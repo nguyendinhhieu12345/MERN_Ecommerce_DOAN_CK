@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -35,7 +35,6 @@ const ProductScreen = () => {
   } = useGetProductDetailsQuery(productId);
   const [result, setResult] = useState(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
@@ -65,7 +64,6 @@ const ProductScreen = () => {
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
-    // navigate('/cart');
   };
 
   const submitHandler = async (e) => {
